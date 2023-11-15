@@ -12,7 +12,7 @@ class DTParser:
 
 
     def gen_output(self):
-        for t, table in enumerate(self._tables[:20]):
+        for t, table in enumerate(self._tables):
             converted_table = ptl.xtable(table)
             with open(self._write_path, 'a',encoding="utf-8") as f:
                 f.write(f"\n\n# Table {t}\n")
