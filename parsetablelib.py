@@ -16,10 +16,10 @@ def get_colmax(t):
     return colmax
 
 def get_parsed_row(row, colmax):
-    return "| "+"| ".join(c.text.ljust(colmax[i]+1) for i, c in enumerate(row.cells))+"|"
+    return "| "+"| ".join(c.text.ljust(colmax[i]+1) for i, c in enumerate(row.cells))+"|\n"
 
 def header_spacer_row(colmax):
-    return "|-"+"|-".join("-"*(c+1) for c in colmax)+"|"
+    return "|-"+"|-".join("-"*(c+1) for c in colmax)+"|\n"
 
 def xtable(t):
 
