@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 pandas = "*"
 python-docx = "*"
+tabulate = "*"
 
 [dev-packages]
 

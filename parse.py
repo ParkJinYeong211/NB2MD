@@ -7,5 +7,6 @@ match parsetype:
     case "1":
         my_dtp = DTParser()
         my_dtp.gen_output()
+        
     case "2":
         pass
