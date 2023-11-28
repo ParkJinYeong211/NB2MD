@@ -1,5 +1,6 @@
 from docx import Document
 import parsetablelib as ptl
+import writer
 import pandas as pd
 
 class DTParser:
@@ -8,6 +9,7 @@ class DTParser:
         self._read_path = input("Ensure file is in current directory: ")
         self._tables = Document(self._read_path).tables
         self._write_path = input("Specify filename to write to: ")
+        self._writer = writer.Writer(self._write_path)
         self.convert_to_DF()
         
 
@@ -19,19 +21,10 @@ class DTParser:
                 for j, cell in enumerate(row.cells):
                     if cell.text:
                         df[i][j] = cell.text
-            df = self.assign_header(df)
+            df = ptl.assign_header(df)
             output.append(df)
         self._tables = output
 
-    def assign_header(self, df):
-        df = pd.DataFrame(df)
-        df.columns=df.iloc[0]
-        return df[1:]
-
 
     def gen_output(self):
-        for t, table in enumerate(self._tables):
-                with open(self._write_path, 'a',encoding="utf-8") as f:
-                    f.write(f"\n\n# Table {t}\n")
-                    for row in table.to_markdown(index=False):
-                        f.write(row)
+        self._writer.write(self._tables)

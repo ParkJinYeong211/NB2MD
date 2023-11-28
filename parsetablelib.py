@@ -1,38 +1,6 @@
-'''
-DEPRECATED
-from docx import Document
 import pandas as pd
 
-def get_colmax(t):
-    colmax = []
-
-    for col in t.items():
-        max = 0
-        for c in col:
-            cellwid = len(str(c))
-            #print(f"|{c.text}|")
-            max = cellwid if cellwid > max else max
-            #print(f"cellwid = {cellwid}; max = {max}")
-        colmax.append(max)
-    #print(colmax)
-    
-    return colmax
-
-def get_parsed_row(row, colmax):
-    return "| "+"| ".join(c.text.ljust(colmax[i]+1) for i, c in enumerate(row.cells))+"|\n"
-
-def header_spacer_row(colmax):
-    return "|-"+"|-".join("-"*(c+1) for c in colmax)+"|\n"
-
-def xtable(t):
-
-    output_table = []
-    colmax = get_colmax(t)
-
-    for r, row in enumerate(t.rows):
-        if r == 1:
-            output_table.append(header_spacer_row(colmax))
-        parsed_row = get_parsed_row(row, colmax)
-        output_table.append(parsed_row)
-
-    return output_table'''
+def assign_header(df):
+    df = pd.DataFrame(df)
+    df.columns=df.iloc[0]
+    return df[1:]
