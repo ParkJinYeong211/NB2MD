@@ -13,3 +13,9 @@ def _set_read_path():
 
 def _set_write_path():
     return input("Specify filename to write to: ")
+
+def check_if_list(x):
+    if isinstance(x, list):
+        return x
+    else:
+        return [x, ]

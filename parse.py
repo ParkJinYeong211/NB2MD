@@ -1,5 +1,5 @@
 from parsedoctable import DTParser
-#from parsexltable import XTParser
+from parsexltable import XTParser
 
 parsetype = input("1) Word Doc\n2) Excel Workbook\n\nEnter Selection: ")
 
@@ -9,4 +9,5 @@ match parsetype:
         my_dtp.gen_output()
         
     case "2":
-        pass
+        my_xtp = XTParser()
+        my_xtp.gen_output()
