@@ -19,13 +19,19 @@ class DTParser:
                 for j, cell in enumerate(row.cells):
                     if cell.text:
                         df[i][j] = cell.text
-            output.append(pd.DataFrame(df))
+            df = self.assign_header(df)
+            output.append(df)
         self._tables = output
+
+    def assign_header(self, df):
+        df = pd.DataFrame(df)
+        df.columns=df.iloc[0]
+        return df[1:]
 
 
     def gen_output(self):
         for t, table in enumerate(self._tables):
                 with open(self._write_path, 'a',encoding="utf-8") as f:
                     f.write(f"\n\n# Table {t}\n")
-                    for row in table.to_markdown():
+                    for row in table.to_markdown(index=False):
                         f.write(row)
