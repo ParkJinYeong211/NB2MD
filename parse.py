@@ -1,5 +1,5 @@
 from parsedoctable import DTParser
-import parsexltable
+#from parsexltable import XTParser
 
 parsetype = input("1) Word Doc\n2) Excel Workbook\n\nEnter Selection: ")
 

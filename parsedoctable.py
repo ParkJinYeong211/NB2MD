@@ -6,11 +6,10 @@ import pandas as pd
 class DTParser:
 
     def __init__(self) -> None:
-        self._read_path = input("Ensure file is in current directory: ")
+        self._read_path, self._write_path = ptl.setIO()
         self._tables = Document(self._read_path).tables
-        self._write_path = input("Specify filename to write to: ")
-        self._writer = writer.Writer(self._write_path)
         self.convert_to_DF()
+        self._writer = writer.Writer(self._write_path)
         
 
     def convert_to_DF(self):
