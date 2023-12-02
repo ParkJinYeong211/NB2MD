@@ -22,3 +22,10 @@ def check_if_list(x):
     
 def empty_df(table):
     return [['' for i in range(len(table.columns))] for j in range(len(table.rows))]
+
+def load_data_to_df(df, table):
+    for i, row in enumerate(table.rows):
+        for j, cell in enumerate(row.cells):
+            if cell.text:
+                df[i][j] = cell.text
+    return df

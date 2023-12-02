@@ -16,10 +16,7 @@ class DTParser:
         output = []
         for table in self._tables:
             df = ptl.empty_df(table)
-            for i, row in enumerate(table.rows):
-                for j, cell in enumerate(row.cells):
-                    if cell.text:
-                        df[i][j] = cell.text
+            df = ptl.load_data_to_df(df, table)
             df = ptl.assign_header(df)
             output.append(df)
         self._tables = output
