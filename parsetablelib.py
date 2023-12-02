@@ -19,3 +19,6 @@ def check_if_list(x):
         return x
     else:
         return [x, ]
+    
+def empty_df(table):
+    return [['' for i in range(len(table.columns))] for j in range(len(table.rows))]

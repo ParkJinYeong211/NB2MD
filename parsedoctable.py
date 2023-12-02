@@ -15,7 +15,7 @@ class DTParser:
     def convert_to_DF(self):
         output = []
         for table in self._tables:
-            df = [['' for i in range(len(table.columns))] for j in range(len(table.rows))]
+            df = ptl.empty_df(table)
             for i, row in enumerate(table.rows):
                 for j, cell in enumerate(row.cells):
                     if cell.text:
