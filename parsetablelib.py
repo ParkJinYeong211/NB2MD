@@ -20,7 +20,7 @@ def check_if_list(x):
     else:
         return [x, ]
     
-def empty_df(table):
+def gen_empty_df(table):
     return [['' for i in range(len(table.columns))] for j in range(len(table.rows))]
 
 def load_data_to_df(df, table):

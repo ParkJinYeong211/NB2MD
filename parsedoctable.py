@@ -15,7 +15,7 @@ class DTParser:
     def convert_to_DF(self):
         output = []
         for table in self._tables:
-            df = ptl.empty_df(table)
+            df = ptl.gen_empty_df(table)
             df = ptl.load_data_to_df(df, table)
             df = ptl.assign_header(df)
             output.append(df)
